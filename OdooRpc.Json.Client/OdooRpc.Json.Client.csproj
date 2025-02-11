@@ -1,25 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Authors>Jean-Philippe Lux</Authors>
-    <Company>Jean-Philippe Lux</Company>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/JeanPhilippeLux/OdooRpc.Json.Client</PackageProjectUrl>
-    <PackageIconUrl />
-    <RepositoryUrl>https://github.com/JeanPhilippeLux/OdooRpc.Json.Client</RepositoryUrl>
-    <Copyright>Jean-Philippe Lux</Copyright>
-    <PackageTags>OdooRpc Json Client</PackageTags>
-    <Description>OdooRpc Json Client</Description>
-    <Version>1.0.0</Version>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
