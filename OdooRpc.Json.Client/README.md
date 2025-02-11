@@ -1,4 +1,4 @@
-# OdooJsonRpcClient
+# OdooRpc.Json.Client
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Intechnity-com/OdooJsonRpcClient/blob/master/LICENSE.md)
 [![NuGet package](https://img.shields.io/nuget/v/PortaCapena.OdooJsonRpcClient?color=blue&logo=NuGet&label=NuGet%20Package)](https://www.nuget.org/packages/PortaCapena.OdooJsonRpcClient)
