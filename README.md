@@ -18,12 +18,6 @@ For example and test, go to https://www.nuget.org/packages/PortaCapena.OdooJsonR
 Use the package manager console, nuget package manager or check on
 [NuGet.org]()
 
-```bash
-Install-Package PortaCapena.OdooJsonRpcClient
-```
-
-
-
 
 ## First steps
 
