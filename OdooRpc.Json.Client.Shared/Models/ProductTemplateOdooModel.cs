@@ -374,6 +374,12 @@ namespace OdooRpc.Json.Client.Shared.Models
         public bool? SaleOk { get; set; }
 
         /// <summary>
+        /// available_in_pos - boolean  <br />
+        /// Required: False, Readonly: False, Store: True, Sortable: True <br />
+        /// </summary>
+        [JsonProperty("available_in_pos")]
+        public bool? AvailableInPOS { get; set; }
+        /// <summary>
         /// purchase_ok - boolean  <br />
         /// Required: False, Readonly: False, Store: True, Sortable: True <br />
         /// </summary>
