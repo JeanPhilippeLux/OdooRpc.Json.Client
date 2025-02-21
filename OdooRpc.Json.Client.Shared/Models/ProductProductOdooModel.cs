@@ -1026,6 +1026,15 @@ namespace OdooRpc.Json.Client.Shared.Models
         /// </summary>
         [JsonProperty("service_to_purchase")]
         public bool? ServiceToPurchase { get; set; }
+
+
+        /// <summary>
+        /// intrastat_code_id - boolean  <br />
+        /// Required: False, Readonly: False, Store: False, Sortable: True <br />
+        /// </summary>
+        [JsonProperty("intrastat_code_id")]
+        public int IntrastatCodeId { get; set; }
+
     }
 
 
