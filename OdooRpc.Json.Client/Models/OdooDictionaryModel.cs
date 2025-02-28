@@ -128,6 +128,12 @@ namespace OdooRpc.Json.Client.Models
                                     this[odooName] = value;
                                     continue;
                                 }
+                            case ConditionalExpression conditionalExpression:
+                                {
+                                    var value = Expression.Lambda(conditionalExpression).Compile().DynamicInvoke();
+                                    this[odooName] = value;
+                                    continue;
+                                }
                         }
                     }
                 }
