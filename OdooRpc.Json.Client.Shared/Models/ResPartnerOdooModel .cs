@@ -494,6 +494,13 @@ namespace OdooRpc.Json.Client.Shared.Models
     {
         [EnumMember(Value = "en_US")]
         EnglishUS = 1,
+        [EnumMember(Value = "nl_BE")]
+        BelgiumDutch = 2,
+        [EnumMember(Value = "fr_BE")]
+        BelgiumFrench = 3,
+
+        
+
     }
 
 
