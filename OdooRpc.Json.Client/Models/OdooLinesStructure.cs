@@ -26,9 +26,19 @@ namespace OdooRpc.Json.Client.Models
         /// <param name="odooLinesCommands">Command of the record.</param>
         /// <param name="odooRecordId">Id of record used for the commands Update, Delete, Unlink and Link. Must be O for commands Create, Clear and Set.</param>
         /// <param name="value">List of integer to add directly in the list.</param>
-        public void AddElement(OdooLinesCommands odooLinesCommands, long odooRecordId, List<int> value)
+        public void AddElement(OdooLinesCommands odooLinesCommands, long odooRecordId, List<long> value)
         {
             this.Add(new object[] { (int)odooLinesCommands, odooRecordId, value }.ToArray());
+        }
+
+        /// <summary>
+        /// Add element to list of lines with only ID?
+        /// </summary>
+        /// <param name="odooLinesCommands">Command of the record.</param>
+        /// <param name="odooRecordId">Element Id</param>
+        public void AddElement(OdooLinesCommands odooLinesCommands, long odooRecordId)
+        {
+            this.Add(new object[] { (int)odooLinesCommands, odooRecordId }.ToArray());
         }
 
     }
