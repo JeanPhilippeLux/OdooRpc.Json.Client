@@ -17,6 +17,8 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("id")]
         public long Id { get; set; }
 
+        [JsonProperty("product_tmpl_id")]
+        public long ProductTemplateId { get; set; }
 
         [JsonProperty("attribute_id")]
         public int AttributeId { get; set; }
