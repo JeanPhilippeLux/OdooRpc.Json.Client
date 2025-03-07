@@ -34,6 +34,9 @@ namespace OdooRpc.Json.Client.Shared.Models
         public long Id { get; set; }
         [JsonProperty("state")]
         public POSStatusOdooEnum? State { get; set; }
+        [JsonProperty("tracking_number")]
+        public string TrackingNumber  { get; set; }
+
     }
 
 

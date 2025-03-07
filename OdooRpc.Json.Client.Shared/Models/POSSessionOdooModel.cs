@@ -18,7 +18,7 @@ namespace OdooRpc.Json.Client.Shared.Models
         public string Name { get; set; }
 
         [JsonProperty("config_id")]
-        public int ConfigId { get; set; }
+        public long ConfigId { get; set; }
 
         [JsonProperty("user_id")]
         public int UserId { get; set; }

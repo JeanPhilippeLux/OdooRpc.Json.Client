@@ -20,7 +20,7 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("price_subtotal_incl")]
         public double PriceSubTotalIncl { get; set; }
         [JsonProperty("product_id")]
-        public int ProductId { get; set; }
+        public long ProductId { get; set; }
         [JsonProperty("id")]
         public long Id { get; set; }
     }
