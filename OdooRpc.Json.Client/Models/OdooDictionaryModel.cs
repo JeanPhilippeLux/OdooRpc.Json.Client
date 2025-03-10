@@ -134,6 +134,14 @@ namespace OdooRpc.Json.Client.Models
                                     this[odooName] = value;
                                     continue;
                                 }
+                            case BinaryExpression binaryExpression:
+                                {
+                                    var value = Expression.Lambda(binaryExpression).Compile().DynamicInvoke();
+                                    this[odooName] = value;
+                                    continue;
+                                }
+                            default:
+                                throw new ArgumentException($"Unsupported expression type: {memberExp.Expression.GetType()}");
                         }
                     }
                 }
