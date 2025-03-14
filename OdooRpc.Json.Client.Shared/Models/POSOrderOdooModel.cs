@@ -26,16 +26,22 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("amount_paid")]
         public double AmountPaid { get; set; }
         [JsonProperty("config_id")]
-        public int ConfigId { get; set; }
+        public long ConfigId { get; set; }
 
         [JsonProperty("lines")]
         public long[] Lines { get; set; }
+
+        [JsonProperty("payment_ids")]
+        public long[] PaymentIds { get; set; }
+
         [JsonProperty("id")]
         public long Id { get; set; }
         [JsonProperty("state")]
         public POSStatusOdooEnum? State { get; set; }
         [JsonProperty("tracking_number")]
         public string TrackingNumber  { get; set; }
+        [JsonProperty("partner_id")]
+        public long PartnerId { get; set; }
 
     }
 

@@ -16,12 +16,21 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("order_id")]
         public int OrderID { get; set; }
         [JsonProperty("price_subtotal")]
-        public double PriceSubTotal { get; set; }
+        public decimal PriceSubTotal { get; set; }
         [JsonProperty("price_subtotal_incl")]
-        public double PriceSubTotalIncl { get; set; }
+        public decimal PriceSubTotalIncl { get; set; }
         [JsonProperty("product_id")]
         public long ProductId { get; set; }
         [JsonProperty("id")]
         public long Id { get; set; }
+        [JsonProperty("qty")]
+        public double? Qty { get; set; }
+
+        [JsonProperty("price_unit")]
+        public double PriceUnit { get; set; }
+        [JsonProperty("discount")]
+        public double? Discount { get; set; }
+
+
     }
 }
