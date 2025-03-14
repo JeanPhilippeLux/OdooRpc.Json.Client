@@ -314,6 +314,26 @@ namespace OdooRpc.Json.Client
             return await CallAndDeserializeAsync<U>(requestModel);
         }
 
+
+
+        public async Task<OdooResult<U>> ExecuteMethod<T, U>(string methodName, string parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
+        {
+            return await ExecuteWitrAccesDenideRetryAsync(userUid => ExecuteMethod<T, U>(userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken));
+        }
+        public async Task<OdooResult<U>> ExecuteMethod<T, U>(int userUid, string methodName, string parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
+        {
+            return await ExecuteMethod<T, U>(Config, userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken);
+        }
+        public static async Task<OdooResult<U>> ExecuteMethod<T, U>(OdooConfig odooConfig, int userUid, string methodName, string parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
+        {
+            var tableName = OdooExtensions.GetOdooTableName<T>();
+            var requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters);
+            var requestModel = new OdooRequestModel(requestParams);
+            return await CallAndDeserializeAsync<U>(requestModel);
+        }
+
+
+
         #endregion
 
 
