@@ -30,7 +30,8 @@ namespace OdooRpc.Json.Client.Shared.Models
         public double PriceUnit { get; set; }
         [JsonProperty("discount")]
         public double? Discount { get; set; }
-
+        [JsonProperty("tax_ids")]
+        public long[] TaxIds { get; set; }
 
     }
 }

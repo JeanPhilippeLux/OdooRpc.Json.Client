@@ -42,7 +42,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         public string TrackingNumber  { get; set; }
         [JsonProperty("partner_id")]
         public long PartnerId { get; set; }
+        [JsonProperty("pos_reference")]
+        public string POSReference { get; set; }
+        [JsonProperty("ticket_code")]
+        public string TicketCode { get; set; }
 
+        [JsonProperty("date_order")]
+        public DateTime DateOrder { get; set; }
     }
 
 
