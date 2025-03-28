@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.ComponentModel;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
@@ -313,6 +314,25 @@ namespace OdooRpc.Json.Client
             var requestModel = new OdooRequestModel(requestParams);
             return await CallAndDeserializeAsync<U>(requestModel);
         }
+
+
+
+        public async Task<OdooResult<bool>> ExecuteMethod<T>(string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new()
+        {
+            return await ExecuteWitrAccesDenideRetryAsync(userUid => ExecuteMethod<T>(userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken));
+        }
+        public async Task<OdooResult<bool>> ExecuteMethod<T>(int userUid, string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new()
+        {
+            return await ExecuteMethod<T>(Config, userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken);
+        }
+        public static async Task<OdooResult<bool>> ExecuteMethod<T>(OdooConfig odooConfig, int userUid, string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new()
+        {
+            var tableName = OdooExtensions.GetOdooTableName<T>();
+            var requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters);
+            var requestModel = new OdooRequestModel(requestParams);
+            return await CallAndDeserializeAsync<bool>(requestModel);
+        }
+
 
 
 
