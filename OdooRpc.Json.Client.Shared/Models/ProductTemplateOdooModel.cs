@@ -385,6 +385,12 @@ namespace OdooRpc.Json.Client.Shared.Models
         /// </summary>
         [JsonProperty("purchase_ok")]
         public bool? PurchaseOk { get; set; }
+        /// <summary>
+        /// is_Storable - boolean  <br />
+        /// Required: False, Readonly: False, Store: True, Sortable: True <br />
+        /// </summary>
+        [JsonProperty("is_storable")]
+        public bool? IsStorable { get; set; }
 
         /// <summary>
         /// pricelist_id - many2one - product.pricelist <br />
