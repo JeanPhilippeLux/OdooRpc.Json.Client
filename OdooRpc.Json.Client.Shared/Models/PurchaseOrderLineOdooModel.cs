@@ -51,6 +51,8 @@ namespace OdooRpc.Json.Client.Shared.Models
         // required
         [JsonProperty("price_unit")]
         public double PriceUnit { get; set; }
+        [JsonProperty("discount")]
+        public double? Discount { get; set; }
 
         [JsonProperty("price_subtotal")]
         public decimal? PriceSubtotal { get; set; }
