@@ -14,6 +14,11 @@ namespace OdooRpc.Json.Client.Shared.Models.Create
     {
         [JsonProperty("intrastat_code_id")]
         public int IntrastatCodeId { get; set; }
+        [JsonProperty("intrastat_origin_country_id")]
+        public long IntrastatOriginCountryId { get; set; }
+
+
+        
 
     }
 }
