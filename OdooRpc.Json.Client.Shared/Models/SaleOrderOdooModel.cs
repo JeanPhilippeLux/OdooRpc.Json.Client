@@ -70,6 +70,12 @@ namespace OdooRpc.Json.Client.Shared.Models
         // required
         [JsonProperty("pricelist_id")]
         public long PricelistId { get; set; }
+        // procurement_group_id
+        // required
+        [JsonProperty("procurement_group_id")]
+        public long ProcurementGroupId { get; set; }
+
+        
 
         // res.currency
         [JsonProperty("currency_id")]
