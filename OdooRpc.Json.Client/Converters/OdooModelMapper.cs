@@ -83,6 +83,12 @@ namespace OdooRpc.Json.Client.Converters
                         return true;
                     }
 
+                    if ((dotnetType == typeof(long) || dotnetType == typeof(long?)) && value.Type == JTokenType.Array && value.Count() >= 1)
+                    {
+                        result = value.First.ToObject(dotnetType);
+                        return true;
+                    }
+
                     if (value.Count() > 2 || dotnetType != typeof(long) && dotnetType != typeof(long?) && dotnetType != typeof(int) && dotnetType != typeof(int?) || value.First.Type != JTokenType.Integer)
                         throw new Exception($"Not implemented json mapping '${value.Parent}'");
 
@@ -209,7 +215,10 @@ namespace OdooRpc.Json.Client.Converters
 
                 case OdooValueTypeEnum.Reference:
                     return ConvertOdooNameToDotNet(property.Value.RelationField) + OdooModelSuffix;
-
+                case OdooValueTypeEnum.Properties:
+                    return "string";
+                case OdooValueTypeEnum.PropertiesDefinition:
+                    return "string";
                 default:
                     throw new ArgumentException($"Not expected Property Value Type: '{property.Value.PropertyValueType}'");
             }
