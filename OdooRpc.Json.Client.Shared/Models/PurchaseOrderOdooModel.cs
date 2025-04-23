@@ -37,6 +37,15 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("partner_id")]
         public long PartnerId { get; set; }
 
+
+        // res.partner
+        // required
+        [JsonProperty("group_id")]
+        public long GroupId { get; set; }
+
+
+        
+
         // res.partner
         [JsonProperty("dest_address_id")]
         public long? DestAddressId { get; set; }
