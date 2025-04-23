@@ -352,11 +352,25 @@ namespace OdooRpc.Json.Client.Shared.Models
     [JsonConverter(typeof(StringEnumConverter))]
     public enum DisplayTypeAccountMoveLineOdooEnum
     {
+        [EnumMember(Value = "product")]
+        Product = 1500,
+        [EnumMember(Value = "cogs")]
+        Cogs = 1501,
+        [EnumMember(Value = "tax")]
+        Tax = 1502,
+        [EnumMember(Value = "discount")]
+        Discount = 1503,
+        [EnumMember(Value = "rounding")]
+        Rounding = 1504,
+        [EnumMember(Value = "payment_term")]
+        PaymentTerm = 1505,
         [EnumMember(Value = "line_section")]
-        Section = 1,
-
+        Section = 1506,
         [EnumMember(Value = "line_note")]
-        Note = 2,
+        Note = 1507,
+        [EnumMember(Value = "epd")]
+        Epd = 1508,
+
     }
 
 }
