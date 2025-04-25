@@ -72,9 +72,22 @@ namespace OdooRpc.Json.Client.Converters
                     result = value.ToObject(dotnetType);
                     return true;
 
+
                 case JTokenType.Array when !dotnetType.IsArray:
                     if (!value.HasValues)
                         return false;
+
+
+                    if (value.Count() == 2 &&  value[0].Type == JTokenType.Integer && value[1].Type == JTokenType.String)
+                    {
+                        // retourne un dictionnaire simple pour éviter toute dépendance à un type fort
+                        result = new Dictionary<int, string>
+                        {
+                            [(int)value[0]] = (string)value[1]
+                        };
+                        return true;
+                    }
+
 
                     if (dotnetType == typeof(string) && value.Children().All(x => x.Type == JTokenType.String))
                     {
