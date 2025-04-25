@@ -45,6 +45,14 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("product_id")]
         public long? ProductId { get; set; }
 
+        [JsonProperty("product_packaging_id")]
+        public long? ProductPackagingId { get; set; }
+
+        [JsonProperty("product_packaging_qty")]
+        public double ProductPackagingQty { get; set; }
+
+        
+
         [JsonProperty("product_type")]
         public ProductTypePurchaseOrderLineOdooEnum? ProductType { get; set; }
 

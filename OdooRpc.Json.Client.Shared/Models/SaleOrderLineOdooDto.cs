@@ -3,6 +3,7 @@ using Newtonsoft.Json.Converters;
 using OdooRpc.Json.Client.Attributes;
 using OdooRpc.Json.Client.Converters;
 using OdooRpc.Json.Client.Models;
+using System.Runtime.Serialization;
 
 namespace OdooRpc.Json.Client.Shared.Models
 {
@@ -144,7 +145,7 @@ namespace OdooRpc.Json.Client.Shared.Models
         public double CustomerLead { get; set; }
 
         [JsonProperty("display_type")]
-        public string DisplayType { get; set; }
+        public SalesOrderLineDisplayTypeEnum DisplayType { get; set; }
 
         // sale.order.option
         [JsonProperty("sale_order_option_ids")]
@@ -272,6 +273,17 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("__last_update")]
         public DateTime? LastUpdate { get; set; }
+    }
+
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SalesOrderLineDisplayTypeEnum
+    {
+        [EnumMember(Value = "line_section")]
+        LineSection = 1,
+
+        [EnumMember(Value = "line_note")]
+        LineNote = 2,
     }
 
 }
