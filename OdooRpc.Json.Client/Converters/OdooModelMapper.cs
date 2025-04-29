@@ -78,7 +78,7 @@ namespace OdooRpc.Json.Client.Converters
                         return false;
 
 
-                    if (value.Count() == 2 &&  value[0].Type == JTokenType.Integer && value[1].Type == JTokenType.String)
+                    if (value.Count() == 2 && value[0].Type == JTokenType.Integer && value[1].Type == JTokenType.String && dotnetType == typeof(Dictionary<int, string>))
                     {
                         // retourne un dictionnaire simple pour éviter toute dépendance à un type fort
                         result = new Dictionary<int, string>

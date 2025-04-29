@@ -4,6 +4,7 @@ using OdooRpc.Json.Client.Attributes;
 using OdooRpc.Json.Client.Converters;
 using OdooRpc.Json.Client.Models;
 using System.Runtime.Serialization;
+using System.Text.Json;
 
 namespace OdooRpc.Json.Client.Shared.Models
 {
@@ -273,6 +274,12 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("__last_update")]
         public DateTime? LastUpdate { get; set; }
+
+
+        [JsonProperty("analytic_distribution")]
+        public Dictionary<string, double> AnalyticDistribution { get; set; }
+
+        
     }
 
 
@@ -285,5 +292,43 @@ namespace OdooRpc.Json.Client.Shared.Models
         [EnumMember(Value = "line_note")]
         LineNote = 2,
     }
+
+
+
+
+
+    public class Entry
+    {
+        public int CustAnalyticId { get; set; }
+        public int WorkshopAnalyticId { get; set; }
+        public double Value { get; set; }
+    }
+
+    public class AnalyticDistribution
+    {
+        public List<Entry> Entries { get; set; } = new();
+
+        public string ToJson()
+        {
+            var dictionary = Entries.ToDictionary(
+                e => $"{e.CustAnalyticId},{e.WorkshopAnalyticId}",
+                e => e.Value
+            );
+
+            return System.Text.Json.JsonSerializer.Serialize(dictionary);
+        }
+
+        public Dictionary<string, double> ToDictionary()
+        {
+            var dictionary = Entries.ToDictionary(
+                e => $"{e.CustAnalyticId},{e.WorkshopAnalyticId}",
+                e => e.Value
+            );
+
+            return dictionary;
+        }
+    }
+
+
 
 }

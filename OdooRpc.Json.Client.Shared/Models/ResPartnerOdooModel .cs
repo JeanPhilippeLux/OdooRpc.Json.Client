@@ -485,6 +485,14 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("sale_warn_msg")]
         public string SaleWarnMsg { get; set; }
+
+
+        [JsonProperty("id_letstart")]
+        public long IdLetstart { get; set; }
+
+
+
+        
     }
 
 
