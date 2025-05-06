@@ -314,28 +314,27 @@ namespace OdooRpc.Json.Client
             var requestModel = new OdooRequestModel(requestParams);
             return await CallAndDeserializeAsync<U>(requestModel);
         }
+        #endregion
 
-
-
-        public async Task<OdooResult<bool>> ExecuteMethod<T>(string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new()
+        #region Execute Odoo Method with Kwargs
+        public async Task<OdooResult<U>> ExecuteMethod<T, U>(string methodName, object[] parameters, object[] Kwarsparameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
         {
-            return await ExecuteWitrAccesDenideRetryAsync(userUid => ExecuteMethod<T>(userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken));
+            return await ExecuteWitrAccesDenideRetryAsync(userUid => ExecuteMethod<T, U>(userUid, methodName, parameters, Kwarsparameters, SelectContext(context, Config.Context), cancellationToken));
         }
-        public async Task<OdooResult<bool>> ExecuteMethod<T>(int userUid, string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new()
+        public async Task<OdooResult<U>> ExecuteMethod<T, U>(int userUid, string methodName, object[] parameters, object[] Kwarsparameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
         {
-            return await ExecuteMethod<T>(Config, userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken);
+            return await ExecuteMethod<T, U>(Config, userUid, methodName, parameters, Kwarsparameters, SelectContext(context, Config.Context), cancellationToken);
         }
-        public static async Task<OdooResult<bool>> ExecuteMethod<T>(OdooConfig odooConfig, int userUid, string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new()
+        public static async Task<OdooResult<U>> ExecuteMethod<T, U>(OdooConfig odooConfig, int userUid, string methodName, object[] parameters, object[] Kwarsparameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
         {
             var tableName = OdooExtensions.GetOdooTableName<T>();
-            var requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters);
+            var requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", Kwarsparameters, odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters);
             var requestModel = new OdooRequestModel(requestParams);
-            return await CallAndDeserializeAsync<bool>(requestModel);
+            return await CallAndDeserializeAsync<U>(requestModel);
         }
+        #endregion
 
-
-
-
+        #region Executre Odoo Method with string parameter
         public async Task<OdooResult<U>> ExecuteMethod<T, U>(string methodName, string parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
         {
             return await ExecuteWitrAccesDenideRetryAsync(userUid => ExecuteMethod<T, U>(userUid, methodName, parameters, SelectContext(context, Config.Context), cancellationToken));
@@ -351,9 +350,6 @@ namespace OdooRpc.Json.Client
             var requestModel = new OdooRequestModel(requestParams);
             return await CallAndDeserializeAsync<U>(requestModel);
         }
-
-
-
         #endregion
 
 
@@ -392,6 +388,9 @@ namespace OdooRpc.Json.Client
         {
             var json = JsonConvert.SerializeObject(requestModel, new IsoDateTimeConverter { DateTimeFormat = OdooConsts.DateTimeFormat });
             var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+
+            string body = await data.ReadAsStringAsync();
 
             var result = await _client.PostAsync(requestModel.Params.Url, data, cancellationToken);
             return result;
