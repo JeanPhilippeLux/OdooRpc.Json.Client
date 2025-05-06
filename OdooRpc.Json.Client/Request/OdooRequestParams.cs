@@ -13,17 +13,29 @@ namespace OdooRpc.Json.Client.Request
         [JsonProperty("args")]
         public object[] Args { get; }
 
-      
+        [JsonIgnore]
+        [JsonProperty("kwargs")]
+        public object[] Kwargs { get; }
+
+
         [JsonIgnore]
         public string Url { get; }
 
         public OdooRequestParams(string url, string service, string method, params object[] paramethers)
         {
-            this.Url = url;
-            this.Service = service;
-            this.Method = method;
-            this.Args = PrepareParams(paramethers);
+            Url = url;
+            Service = service;
+            Method = method;
+            Args = PrepareParams(paramethers);
         }
+
+        public OdooRequestParams(string url, string service, string method, object[] kwargsParameters, params object[] paramethers) : this(url, service, method, paramethers)
+        {
+            Kwargs = PrepareParams(kwargsParameters);
+            Args = Args.Concat(Kwargs).ToArray();
+        }
+
+
 
         protected object[] PrepareParams(object[] paramethers)
         {
