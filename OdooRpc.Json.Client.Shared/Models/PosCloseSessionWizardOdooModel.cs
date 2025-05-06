@@ -13,5 +13,9 @@ namespace OdooRpc.Json.Client.Shared.Models
     {
         [JsonProperty("id")]
         public long Id { get; set; }
+
+        [JsonProperty("account_id")]
+        public long account_id { get; set; }
+        
     }
 }
