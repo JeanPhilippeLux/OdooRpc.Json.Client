@@ -1022,6 +1022,8 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [EnumMember(Value = "product")]
         StorableProduct = 3,
+        [EnumMember(Value = "combo")]
+        Combo = 4,
     }
 
 
