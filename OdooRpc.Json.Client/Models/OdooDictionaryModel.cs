@@ -77,74 +77,100 @@ namespace OdooRpc.Json.Client.Models
 
         protected void AddFromExpresion<T>(Expression<Func<T>> expression) where T : IOdooAtributtesModel, new()
         {
-            if (!(expression.Body is MemberInitExpression body)) throw new ArgumentException("Invalid Func");
-
-            foreach (var memberExpression in body.Bindings)
+            if (expression.Body is MemberInitExpression body)
             {
-                if (memberExpression is MemberAssignment memberExp)
+
+                foreach (var memberExpression in body.Bindings)
                 {
-                    var property = (PropertyInfo)memberExpression.Member;
-                    var attribute = property.GetCustomAttributes<JsonPropertyAttribute>();
-
-                    var odooName = attribute.FirstOrDefault()?.PropertyName;
-
-                    if (odooName != null)
+                    if (memberExpression is MemberAssignment memberExp)
                     {
-                        switch (memberExp.Expression)
+                        var property = (PropertyInfo)memberExpression.Member;
+                        var attribute = property.GetCustomAttributes<JsonPropertyAttribute>();
+
+                        var odooName = attribute.FirstOrDefault()?.PropertyName;
+
+                        if (odooName != null)
                         {
-                            case ConstantExpression constantExpression:
-                                {
-                                    var value = constantExpression.Value;
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case MemberExpression memberExpr:
-                                {
-                                    var value = Expression.Lambda(memberExpr).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case UnaryExpression unaryExpression:
-                                {
-                                    var value = Expression.Lambda(unaryExpression).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case MethodCallExpression methodCallExpression:
-                                {
-                                    var value = Expression.Lambda(methodCallExpression).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case NewExpression memberInitExpression:
-                                {
-                                    var value = Expression.Lambda(memberInitExpression).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case NewArrayExpression newArrayExpression:
-                                {
-                                    var value = Expression.Lambda(newArrayExpression).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case ConditionalExpression conditionalExpression:
-                                {
-                                    var value = Expression.Lambda(conditionalExpression).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            case BinaryExpression binaryExpression:
-                                {
-                                    var value = Expression.Lambda(binaryExpression).Compile().DynamicInvoke();
-                                    this[odooName] = value;
-                                    continue;
-                                }
-                            default:
-                                throw new ArgumentException($"Unsupported expression type: {memberExp.Expression.GetType()}");
+                            switch (memberExp.Expression)
+                            {
+                                case ConstantExpression constantExpression:
+                                    {
+                                        var value = constantExpression.Value;
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case MemberExpression memberExpr:
+                                    {
+                                        var value = Expression.Lambda(memberExpr).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case UnaryExpression unaryExpression:
+                                    {
+                                        var value = Expression.Lambda(unaryExpression).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case MethodCallExpression methodCallExpression:
+                                    {
+                                        var value = Expression.Lambda(methodCallExpression).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case NewExpression memberInitExpression:
+                                    {
+                                        var value = Expression.Lambda(memberInitExpression).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case NewArrayExpression newArrayExpression:
+                                    {
+                                        var value = Expression.Lambda(newArrayExpression).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case ConditionalExpression conditionalExpression:
+                                    {
+                                        var value = Expression.Lambda(conditionalExpression).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                case BinaryExpression binaryExpression:
+                                    {
+                                        var value = Expression.Lambda(binaryExpression).Compile().DynamicInvoke();
+                                        this[odooName] = value;
+                                        continue;
+                                    }
+                                default:
+                                    throw new ArgumentException($"Unsupported expression type: {memberExp.Expression.GetType()}");
+                            }
                         }
                     }
                 }
+
+            }
+            else if (expression.Body is MemberExpression memberExpr)
+            {
+                // Exemple: () => obj.resPartnerBankOdooModel
+                var value = Expression.Lambda(memberExpr).Compile().DynamicInvoke();
+
+                if (value is IOdooAtributtesModel odooModel)
+                {
+                    foreach (var prop in typeof(T).GetProperties())
+                    {
+                        var attribute = prop.GetCustomAttributes<JsonPropertyAttribute>();
+                        var odooName = attribute.FirstOrDefault()?.PropertyName;
+
+                        if (odooName != null)
+                        {
+                            var val = prop.GetValue(odooModel);
+                            this[odooName] = val;
+                        }
+                    }
+                }
+            }
+            else
+            {
                 throw new ArgumentException("Invalid Func");
             }
         }
