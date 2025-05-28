@@ -25,6 +25,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("pos_order_id")]
         public long POSOrderId { get; set; }
 
+        [JsonProperty("sale_order_id")]
+        public long SaleOrderId { get; set; }
+        
+
 
     }
 
