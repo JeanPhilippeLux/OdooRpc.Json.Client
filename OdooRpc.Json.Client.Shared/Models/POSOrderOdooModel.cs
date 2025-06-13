@@ -23,6 +23,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         public double AmountTax { get; set; }
         [JsonProperty("amount_return")]
         public double AmountReturn { get; set; }
+
+        [JsonProperty("amount_difference")]
+        public double AmountDifference { get; set; }
+
         [JsonProperty("amount_paid")]
         public double AmountPaid { get; set; }
         [JsonProperty("config_id")]

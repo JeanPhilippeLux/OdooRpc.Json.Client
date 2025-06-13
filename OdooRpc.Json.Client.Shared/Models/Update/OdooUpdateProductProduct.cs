@@ -10,15 +10,16 @@ using System.Threading.Tasks;
 namespace OdooRpc.Json.Client.Shared.Models.Create
 {
     [OdooTableName("product.product")]
-    public class OdooUpdateIntrastatProduct : IOdooCreateModel
+    public class OdooUpdateProductProduct : IOdooCreateModel
     {
         [JsonProperty("intrastat_code_id")]
         public int IntrastatCodeId { get; set; }
         [JsonProperty("intrastat_origin_country_id")]
         public long IntrastatOriginCountryId { get; set; }
 
+        [JsonProperty("weight")]
+        public decimal Weight { get; set; }
 
-        
 
     }
 }

@@ -289,6 +289,10 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("__last_update")]
         public DateTime? LastUpdate { get; set; }
+
+        [JsonProperty("has_price_changed")]
+        public bool? HasPriceChanged { get; set; }
+
     }
 
 

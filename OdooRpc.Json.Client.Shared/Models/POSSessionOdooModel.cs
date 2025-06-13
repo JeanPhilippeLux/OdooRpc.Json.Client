@@ -29,6 +29,10 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("start_at")]
         public DateTime StartAt { get; set; }
+        [JsonProperty("stop_at")]
+        public DateTime StopAt { get; set; }
+
+        
 
         [JsonProperty("cash_register_balance_start")]
         public decimal CashRegisterBalanceStart { get; set; }

@@ -18,6 +18,7 @@
 	<Description>OdooRpc Json Client</Description>
 	<Version>1.0.2</Version>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<Platforms>AnyCPU;x64</Platforms>
 	  
 	  
   </PropertyGroup>
