@@ -491,8 +491,52 @@ namespace OdooRpc.Json.Client.Shared.Models
         public long IdLetstart { get; set; }
 
 
+        [JsonProperty("is_mailing_list")]
+        public bool? IsMailingList { get; set; }
 
+
+        [JsonProperty("client_type")]
+        public ClientTypeOdooEnum? ClientType { get; set; }
+
+        [JsonProperty("firstname")]
+        public string? FirstName { get; set; }
         
+        [JsonProperty("lastname")]
+        public string? LastName { get; set; }
+
+        [JsonProperty("birthday")]
+        public DateTime? BirthDay { get; set; }
+
+        [JsonProperty("gender")]
+        public GenderOdooEnum? Gender { get; set; }
+
+        [JsonProperty("client_status")]
+        public ClientStatusOdooEnum? ClientStatus { get; set; }
+
+        [JsonProperty("card_number")]
+        public long? CardNumber { get; set; }
+
+        [JsonProperty("card_points")]
+        public int? CardPoints { get; set; }
+
+        [JsonProperty("turnover_cumul")]
+        public decimal? TurnoverCumul { get; set; }
+
+        [JsonProperty("card_points_cumul")]
+        public int? CardPointsCumul { get; set; }
+
+        [JsonProperty("expired_points")]
+        public int? ExpiredPoints { get; set; }
+
+        [JsonProperty("expired_points_date")]
+        public DateTime? ExpiredPointsDate { get; set; }
+
+        [JsonProperty("created_time_letstart")]
+        public DateTime? CreatedTimeLetstart { get; set; }
+
+        [JsonProperty("modified_time_letstart")]
+        public DateTime? ModifiedTimeLetstart { get; set; }
+
     }
 
 
@@ -506,9 +550,6 @@ namespace OdooRpc.Json.Client.Shared.Models
         BelgiumDutch = 2,
         [EnumMember(Value = "fr_BE")]
         BelgiumFrench = 3,
-
-        
-
     }
 
 
@@ -2425,6 +2466,47 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [EnumMember(Value = "block")]
         BlockingMessage = 3,
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ClientTypeOdooEnum
+    {
+        [EnumMember(Value = "list")]
+        List = 1,
+        [EnumMember(Value = "individual")]
+        Individual = 2,
+
+        [EnumMember(Value = "pro")]
+        Pro = 3,
+
+        [EnumMember(Value = "unspecified")]
+        Unspecified = 4,
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum GenderOdooEnum
+    {
+        [EnumMember(Value = "female")]
+        Female = 1,
+
+        [EnumMember(Value = "male")]
+        Male = 2,
+
+        [EnumMember(Value = "unspecified")]
+        Unspecified = 3,
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ClientStatusOdooEnum
+    {
+        [EnumMember(Value = "not_retained")]
+        NotRetained = 1,
+
+        [EnumMember(Value = "retained")]
+        Retained = 2,
+
+        [EnumMember(Value = "vip")]
+        Vip = 3,
     }
 
 }
