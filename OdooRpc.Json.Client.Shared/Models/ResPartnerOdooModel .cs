@@ -514,7 +514,7 @@ namespace OdooRpc.Json.Client.Shared.Models
         public ClientStatusOdooEnum? ClientStatus { get; set; }
 
         [JsonProperty("card_number")]
-        public long? CardNumber { get; set; }
+        public string CardNumber { get; set; }
 
         [JsonProperty("card_points")]
         public int? CardPoints { get; set; }
