@@ -26,6 +26,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("factor")]
         public double Factor { get; set; }
 
+
+        [JsonProperty("factor_inv")]
+        public double FactorInv { get; set; }
+
         /// <summary>
         /// uom_type - selection  <br />
         /// Required: True, Readonly: False, Store: True, Sortable: True <br />
