@@ -154,6 +154,10 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("__last_update")]
         public DateTime? LastUpdate { get; set; }
+
+        [JsonProperty("analytic_distribution")]
+        public Dictionary<string, double> AnalyticDistribution { get; set; }
+
     }
 
 
