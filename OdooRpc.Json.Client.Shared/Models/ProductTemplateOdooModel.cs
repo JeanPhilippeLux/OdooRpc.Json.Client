@@ -9,7 +9,7 @@ namespace OdooRpc.Json.Client.Shared.Models
 {
     [OdooTableName("product.template")]
     [JsonConverter(typeof(OdooModelConverter))]
-    public class ProductTemplateOdooModel : IOdooModel
+    public class ProductTemplateOdooModel : OdooModelBase
     {
 
         /// <summary>
@@ -560,12 +560,6 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("priority")]
         public FavoriteProductTemplateOdooEnum? Priority { get; set; }
 
-        /// <summary>
-        /// id - integer  <br />
-        /// Required: False, Readonly: True, Store: True, Sortable: True <br />
-        /// </summary>
-        [JsonProperty("id")]
-        public long Id { get; set; }
 
         /// <summary>
         /// __last_update - datetime  <br />

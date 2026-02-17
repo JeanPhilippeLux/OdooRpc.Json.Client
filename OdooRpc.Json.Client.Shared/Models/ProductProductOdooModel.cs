@@ -9,7 +9,7 @@ namespace OdooRpc.Json.Client.Shared.Models
 {
     [OdooTableName("product.product")]
     [JsonConverter(typeof(OdooModelConverter))]
-    public class ProductProductOdooModel : IOdooModel
+    public class ProductProductOdooModel : OdooModelBase
     {
 
         /// <summary>
@@ -551,12 +551,6 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("purchase_order_line_ids")]
         public long[] PurchaseOrderLineIds { get; set; }
 
-        /// <summary>
-        /// id - integer  <br />
-        /// Required: False, Readonly: True, Store: True, Sortable: True <br />
-        /// </summary>
-        [JsonProperty("id")]
-        public long Id { get; set; }
 
         /// <summary>
         /// display_name - char  <br />

@@ -1,18 +1,13 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using OdooRpc.Json.Client.Attributes;
 using OdooRpc.Json.Client.Converters;
-using OdooRpc.Json.Client.Models;
-using System.Runtime.Serialization;
 
 namespace OdooRpc.Json.Client.Shared.Models
 {
     [OdooTableName("account.analytic.account")]
     [JsonConverter(typeof(OdooModelConverter))]
-    public class AccountAnalyticAccountOdooModel : IOdooModel
+    public class AccountAnalyticAccountOdooModel : OdooModelBase
     {
-        [JsonProperty("id")]
-        public long Id { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("plan_id")]
