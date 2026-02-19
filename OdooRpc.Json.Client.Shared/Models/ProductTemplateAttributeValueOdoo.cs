@@ -25,6 +25,8 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("product_attribute_value_id")]
         public long ProductAttributeValueId { get; set; }
 
+        [JsonProperty("price_extra")]
+        public double PriceExtra { get; set; }
 
     }
 }

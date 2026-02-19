@@ -20,6 +20,8 @@ namespace OdooRpc.Json.Client.Shared.Models.Create
         [JsonProperty("weight")]
         public decimal Weight { get; set; }
 
+        [JsonProperty("default_code")]
+        public string DefaultCode { get; set; }
 
     }
 }
