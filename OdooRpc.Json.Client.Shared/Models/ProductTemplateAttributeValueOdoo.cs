@@ -28,5 +28,8 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("price_extra")]
         public double PriceExtra { get; set; }
 
+        [JsonProperty("diameter")]
+        public string Diameter { get; set; }
+
     }
 }
