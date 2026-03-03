@@ -10,11 +10,8 @@ namespace OdooRpc.Json.Client.Shared.Models
 {
     [OdooTableName("stock.warehouse")]
     [JsonConverter(typeof(OdooModelConverter))]
-    public class StockWarehouseOdooModel : IOdooModel
+    public class StockWarehouseOdooModel : OdooModelBase
     {
-        [JsonProperty("id")]
-        public long Id { get; set; }
-
         // required
         [JsonProperty("name")]
         public string Name { get; set; }
