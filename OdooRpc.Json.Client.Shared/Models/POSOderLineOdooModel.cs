@@ -34,6 +34,8 @@ namespace OdooRpc.Json.Client.Shared.Models
         public long[] TaxIds { get; set; }
         [JsonProperty("analytic_distribution")]
         public Dictionary<string, double> AnalyticDistribution { get; set; }
+        [JsonProperty("customer_note")]
+        public string CustomerNote { get; set; }
 
     }
 }

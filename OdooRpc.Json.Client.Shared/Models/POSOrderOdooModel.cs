@@ -53,6 +53,8 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("date_order")]
         public DateTime DateOrder { get; set; }
+        [JsonProperty("general_note")]
+        public string GeneralNote { get; set; }
     }
 
 
