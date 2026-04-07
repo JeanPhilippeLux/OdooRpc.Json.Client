@@ -504,10 +504,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("lastname")]
         public string? LastName { get; set; }
 
-        [JsonProperty("birthday")]
+        [JsonProperty("birthday_custom")]
         public DateTime? BirthDay { get; set; }
 
-        [JsonProperty("gender")]
+        [JsonProperty("gender_custom")]
         public GenderOdooEnum? Gender { get; set; }
 
         [JsonProperty("client_status")]
