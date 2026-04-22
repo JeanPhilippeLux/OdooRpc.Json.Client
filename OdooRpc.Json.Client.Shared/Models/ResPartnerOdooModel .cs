@@ -494,6 +494,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("is_mailing_list")]
         public bool? IsMailingList { get; set; }
 
+        /// <summary>
+        /// Opt-in fidélité. Quand coché à la création du partner, Odoo génère automatiquement
+        /// une loyalty.card sur le programme par défaut.
+        /// </summary>
+        [JsonProperty("is_opt_in_fidelity")]
+        public bool? IsOptInFidelity { get; set; }
+
 
         [JsonProperty("client_type")]
         public ClientTypeOdooEnum? ClientType { get; set; }
