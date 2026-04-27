@@ -36,6 +36,13 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("create_date")]
         public DateTime? CreateDate { get; set; }
+
+        /// <summary>
+        /// Date d'expiration de la ligne de points (champ <c>expiration_date</c> côté Odoo).
+        /// Affichée dans la colonne "Expiration" de l'écran fidélité Odoo.
+        /// </summary>
+        [JsonProperty("expiration_date")]
+        public DateTime? ExpirationDate { get; set; }
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
