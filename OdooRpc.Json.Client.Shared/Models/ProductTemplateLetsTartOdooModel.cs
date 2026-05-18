@@ -45,5 +45,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         /// </summary>
         [JsonProperty("days_before_delivery")]
         public int? DaysBeforeDelivery { get; set; }
+
+        /// <summary>
+        /// public_categ_ids — many2many vers <c>product.public.category</c>. Lie l'article aux
+        /// catégories visibles sur le site web. Lets.TART pousse une seule catégorie résolue
+        /// depuis la classification de l'article (en fonction de WebGroupVisibility).
+        /// </summary>
+        [JsonProperty("public_categ_ids")]
+        public long[] PublicCategIds { get; set; }
     }
 }
