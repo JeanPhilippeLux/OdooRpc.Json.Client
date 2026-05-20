@@ -39,9 +39,11 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("warehouse_type")]
         public WarehouseTypeOdooEnum? WarehouseType { get; set; }
 
-        // many2many vers tartes.francoise.closing.day (custom tartes.francoise)
-        [JsonProperty("delivery_closed_day_ids")]
-        public long[] DeliveryClosedDayIds { get; set; }
+        // many2many vers tartes.francoise.opening.day (custom tartes.francoise)
+        // — jours d'ouverture exceptionnels (les fermetures passent désormais
+        // par resource.calendar.leaves du calendrier classique).
+        [JsonProperty("delivery_opened_day_ids")]
+        public long[] DeliveryOpenedDayIds { get; set; }
 
         [JsonProperty("write_date")]
         public DateTime? WriteDate { get; set; }
