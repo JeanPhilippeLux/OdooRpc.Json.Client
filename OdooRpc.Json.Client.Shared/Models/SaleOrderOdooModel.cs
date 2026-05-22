@@ -170,6 +170,14 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("tag_ids")]
         public long[] TagIds { get; set; }
 
+        // stock.warehouse — entrepôt source de la commande
+        [JsonProperty("warehouse_id")]
+        public long? WarehouseId { get; set; }
+
+        // website — null/false pour les commandes hors e-commerce (saisies manuelles, POS, etc.)
+        [JsonProperty("website_id")]
+        public long? WebsiteId { get; set; }
+
         // sale.order.template
         [JsonProperty("sale_order_template_id")]
         public long? SaleOrderTemplateId { get; set; }

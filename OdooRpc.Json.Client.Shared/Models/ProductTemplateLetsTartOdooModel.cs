@@ -53,5 +53,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         /// </summary>
         [JsonProperty("public_categ_ids")]
         public long[] PublicCategIds { get; set; }
+
+        /// <summary>
+        /// product_tag_ids — many2many vers <c>product.tag</c>. Lets.TART y pousse les
+        /// allergènes de l'article (un tag par allergène, mappé par XML ID
+        /// <c>AllergenTable.{id}</c>) avec <c>visible_on_ecommerce = true</c>.
+        /// </summary>
+        [JsonProperty("product_tag_ids")]
+        public long[] ProductTagIds { get; set; }
     }
 }
