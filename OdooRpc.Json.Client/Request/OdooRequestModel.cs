@@ -83,7 +83,9 @@ namespace OdooRpc.Json.Client.Request
         }
         public static OdooRequestModel Delete(OdooConfig config, int uid, string tableName, long[] ids, OdooContext context = null)
         {
-            var param = new OdooRequestParams(config.ApiUrlJson, "object", "execute_kw", config.DbName, uid, config.Password, tableName, OdooOperation.Delete, ids, MapQuery(context));
+            // Wrap dans un object[] sinon le sérialiseur étale chaque ID comme arg positionnel
+            // distinct (Odoo répond "unlink() takes 1 positional argument but N given").
+            var param = new OdooRequestParams(config.ApiUrlJson, "object", "execute_kw", config.DbName, uid, config.Password, tableName, OdooOperation.Delete, new object[] { ids }, MapQuery(context));
             return new OdooRequestModel(param);
         }
 
