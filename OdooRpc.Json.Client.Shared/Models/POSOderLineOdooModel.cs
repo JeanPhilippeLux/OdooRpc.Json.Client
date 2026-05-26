@@ -37,5 +37,21 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("customer_note")]
         public string CustomerNote { get; set; }
 
+        /// <summary>
+        /// sale.order — lien vers la sale.order originale (champ custom Lets.TART côté Odoo).
+        /// Renseigné quand le ticket POS clôture une commande e-commerce (la SalesTable porte
+        /// alors un WebReference correspondant à sale.order.name).
+        /// </summary>
+        [JsonProperty("sale_order_origin_id")]
+        public long? SaleOrderOriginId { get; set; }
+
+        /// <summary>
+        /// sale.order.line — lien vers la ligne d'origine de la sale.order (champ custom Lets.TART).
+        /// Renseigné quand la ligne POS reprend une ligne existante de la commande e-commerce.
+        /// Pour les lignes de "différence" (qty négative d'annulation + ligne corrigée), seul
+        /// SaleOrderOriginId est rempli.
+        /// </summary>
+        [JsonProperty("sale_order_line_id")]
+        public long? SaleOrderLineId { get; set; }
     }
 }
