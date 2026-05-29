@@ -24,8 +24,20 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("issued")]
         public double? Issued { get; set; }
 
+        /// <summary>
+        /// Points consommés via un bon de réduction posé sur une ligne de vente.
+        /// </summary>
         [JsonProperty("used")]
         public double? Used { get; set; }
+
+        /// <summary>
+        /// Nombre de points effectivement utilisés sur la ligne d'historique. Quand
+        /// <c>used_given_points == issued</c>, la ligne est entièrement consommée et passe
+        /// au statut <see cref="LoyaltyHistoryStatusOdooEnum.Used"/>. Le solde disponible se
+        /// calcule donc sur <c>issued - used_given_points</c> des lignes encore Available.
+        /// </summary>
+        [JsonProperty("used_given_points")]
+        public double? UsedGivenPoints { get; set; }
 
         /// <summary>
         /// Statut personnalisé Let's TART (selection Odoo) pour distinguer les points
@@ -53,5 +65,8 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [EnumMember(Value = "expired")]
         Expired = 2,
+
+        [EnumMember(Value = "used")]
+        Used = 3,
     }
 }
