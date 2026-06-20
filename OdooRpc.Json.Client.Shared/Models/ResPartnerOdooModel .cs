@@ -544,6 +544,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("modified_time_letstart")]
         public DateTime? ModifiedTimeLetstart { get; set; }
 
+        /// <summary>
+        /// Crédit autorisé (champ custom Odoo, boolean). Déduit côté Let's TART du statut
+        /// client (CustStatusTable.CanCredit).
+        /// </summary>
+        [JsonProperty("authorized_credit")]
+        public bool? AuthorizedCredit { get; set; }
+
     }
 
 
