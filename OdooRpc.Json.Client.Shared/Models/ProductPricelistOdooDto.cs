@@ -39,6 +39,18 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("discount_policy")]
         public string DiscountPolicy { get; set; }
 
+        /// <summary>
+        /// La liste de prix est sélectionnable manuellement (sur le client / au comptoir).
+        /// </summary>
+        [JsonProperty("selectable")]
+        public bool? Selectable { get; set; }
+
+        /// <summary>
+        /// Site web auquel la liste de prix est restreinte (website.id). false = tous les sites.
+        /// </summary>
+        [JsonProperty("website_id")]
+        public long? WebsiteId { get; set; }
+
         [JsonProperty("id")]
         public long Id { get; set; }
 

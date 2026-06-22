@@ -71,6 +71,19 @@ namespace OdooRpc.Json.Client.Shared.Models
         public decimal? PercentPrice { get; set; }
 
         /// <summary>
+        /// Remise en % appliquée par la formule (si compute_price = "formula").
+        /// Ex : 15 = -15% sur le prix de base.
+        /// </summary>
+        [JsonProperty("price_discount")]
+        public decimal? PriceDiscount { get; set; }
+
+        /// <summary>
+        /// Majoration en % appliquée par la formule (si compute_price = "formula").
+        /// </summary>
+        [JsonProperty("price_markup")]
+        public decimal? PriceMarkup { get; set; }
+
+        /// <summary>
         /// Liste de prix de base (si compute_price = "formula" ou "percentage")
         /// </summary>
         [JsonProperty("base_pricelist_id")]
