@@ -61,6 +61,12 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("id")]
         public long Id { get; set; }
 
+        // "Compte de confiance / approuvé" (Send Money). Quand true, le core Odoo interdit de
+        // modifier acc_number ou partner_id (account/models/res_partner_bank.py). Nécessite le
+        // groupe account.group_validate_bank_account pour être modifié.
+        [JsonProperty("allow_out_payment")]
+        public bool? AllowOutPayment { get; set; }
+
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
 
