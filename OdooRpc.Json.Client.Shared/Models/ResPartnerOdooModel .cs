@@ -551,6 +551,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("authorized_credit")]
         public bool? AuthorizedCredit { get; set; }
 
+        /// <summary>
+        /// Client B2B (champ custom Odoo, boolean). true quand le res.partner provient d'un
+        /// CustTable (client professionnel), false quand il provient d'un ClientTable (client B2C).
+        /// </summary>
+        [JsonProperty("is_b2b")]
+        public bool? IsB2b { get; set; }
+
     }
 
 
