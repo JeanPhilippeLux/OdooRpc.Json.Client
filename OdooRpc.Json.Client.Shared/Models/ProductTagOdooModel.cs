@@ -22,6 +22,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("visible_on_ecommerce")]
         public bool? VisibleOnECommerce { get; set; }
 
+        /// <summary>
+        /// Catégorie d'étiquettes de produit (<c>product.tag.category</c>) à laquelle
+        /// appartient ce tag (many2one). null/0 = aucune catégorie.
+        /// </summary>
+        [JsonProperty("product_tag_category_id")]
+        public long? ProductTagCategoryId { get; set; }
+
         /// <summary>Couleur (entier symbolisant la teinte côté UI Odoo).</summary>
         [JsonProperty("color")]
         public int? Color { get; set; }
