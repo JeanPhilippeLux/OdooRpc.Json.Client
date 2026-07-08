@@ -89,6 +89,11 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("order_line")]
         public long[] OrderLine { get; set; }
 
+        // delivery.carrier — mode de livraison choisi sur la commande e-commerce.
+        // Sert à déterminer enlèvement vs livraison (via l'XML ID du carrier).
+        [JsonProperty("carrier_id")]
+        public long? CarrierId { get; set; }
+
         [JsonProperty("invoice_count")]
         public int? InvoiceCount { get; set; }
 

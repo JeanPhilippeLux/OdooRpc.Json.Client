@@ -69,6 +69,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("website")]
         public string Website { get; set; }
 
+        // website — site e-commerce Odoo auquel le partenaire est rattaché (many2one).
+        [JsonProperty("website_id")]
+        public long? WebsiteId { get; set; }
+
         [JsonProperty("comment")]
         public string Comment { get; set; }
 
