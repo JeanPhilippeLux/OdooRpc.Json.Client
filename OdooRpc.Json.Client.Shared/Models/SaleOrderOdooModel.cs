@@ -94,6 +94,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("carrier_id")]
         public long? CarrierId { get; set; }
 
+        // Montant total des frais de livraison de la commande (module delivery).
+        [JsonProperty("amount_delivery")]
+        public decimal? AmountDelivery { get; set; }
+
         [JsonProperty("invoice_count")]
         public int? InvoiceCount { get; set; }
 

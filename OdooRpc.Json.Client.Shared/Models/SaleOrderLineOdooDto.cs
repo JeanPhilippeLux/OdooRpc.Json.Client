@@ -139,6 +139,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("is_downpayment")]
         public bool? IsDownpayment { get; set; }
 
+        // true si la ligne est une ligne de frais de livraison (module delivery).
+        [JsonProperty("is_delivery")]
+        public bool? IsDelivery { get; set; }
+
         [JsonProperty("state")]
         public string State { get; set; }
 
