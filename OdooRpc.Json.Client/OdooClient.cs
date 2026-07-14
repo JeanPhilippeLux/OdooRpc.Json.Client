@@ -310,7 +310,25 @@ namespace OdooRpc.Json.Client
         public static async Task<OdooResult<U>> ExecuteMethod<T, U>(OdooConfig odooConfig, int userUid, string methodName, object[] parameters, OdooContext context = null, CancellationToken cancellationToken = default) where T : IOdooModel, new() where U : IOdooMethodResult, new()
         {
             var tableName = OdooExtensions.GetOdooTableName<T>();
-            var requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters);
+
+            OdooRequestParams requestParams;
+            if (context != null && context.Count > 0)
+            {
+                // Le contexte Odoo est le paramètre kwargs de execute_kw : il doit être le DERNIER
+                // élément (à plat) des params RPC, sous la forme { "context": {...} }, exactement comme
+                // Read/Search le font via MapQuery. On l'ajoute donc comme argument SÉPARÉ (après
+                // `parameters` = les args de la méthode), pas comme un sous-tableau — sinon Odoo reçoit
+                // un argument positionnel de trop ("action_cancel() takes 1 positional argument but 2
+                // were given"). On utilise le constructeur simple (params object[]) en passant chaque
+                // segment comme un argument distinct.
+                object kwargs = new Dictionary<string, object> { { "context", context } };
+                requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters, kwargs);
+            }
+            else
+            {
+                requestParams = new OdooRequestParams(odooConfig.ApiUrlJson, "object", "execute_kw", odooConfig.DbName, userUid, odooConfig.Password, tableName, methodName, parameters);
+            }
+
             var requestModel = new OdooRequestModel(requestParams);
             return await CallAndDeserializeAsync<U>(requestModel);
         }
