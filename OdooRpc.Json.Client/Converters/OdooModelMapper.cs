@@ -62,6 +62,12 @@ namespace OdooRpc.Json.Client.Converters
                     result = ConvertToDotNetEnum(nullableType, value);
                     return true;
 
+                // Champ Odoo de type dict (ex: analytic_distribution = {"1066,54": 100.0}) → Dictionary.
+                // Odoo renvoie `false` quand le dict est vide (déjà géré par le case Boolean plus haut).
+                case JTokenType.Object when dotnetType.IsGenericType && dotnetType.GetGenericTypeDefinition() == typeof(Dictionary<,>):
+                    result = value.ToObject(dotnetType);
+                    return true;
+
                 case JTokenType.Array when dotnetType.IsArray:
                     if (!value.HasValues)
                     {
