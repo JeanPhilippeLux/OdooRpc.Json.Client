@@ -524,18 +524,6 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("client_status")]
         public ClientStatusOdooEnum? ClientStatus { get; set; }
 
-        [JsonProperty("card_number")]
-        public string CardNumber { get; set; }
-
-        [JsonProperty("card_points")]
-        public int? CardPoints { get; set; }
-
-        [JsonProperty("turnover_cumul")]
-        public decimal? TurnoverCumul { get; set; }
-
-        [JsonProperty("card_points_cumul")]
-        public int? CardPointsCumul { get; set; }
-
         [JsonProperty("expired_points")]
         public int? ExpiredPoints { get; set; }
 
