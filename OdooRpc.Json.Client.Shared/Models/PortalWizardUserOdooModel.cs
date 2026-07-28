@@ -25,7 +25,18 @@ namespace OdooRpc.Json.Client.Shared.Models
         public string Email { get; set; }
 
         // true si le contact a déjà un accès portail actif.
-        [JsonProperty("in_portal")]
-        public bool InPortal { get; set; }
+        // Le champ Odoo s'appelle bien "is_portal" (et non "in_portal") : demander "in_portal"
+        // fait échouer toute la lecture avec "Invalid field 'in_portal' on model
+        // 'portal.wizard.user'", donc aucune ligne du wizard n'est remontée.
+        [JsonProperty("is_portal")]
+        public bool IsPortal { get; set; }
+
+        /// <summary>
+        /// État de l'adresse e-mail de la ligne, calculé par Odoo : <c>ok</c> = adresse exploitable,
+        /// <c>ko</c> = adresse invalide (typiquement un champ contenant plusieurs adresses).
+        /// Une ligne <c>ko</c> ne peut pas recevoir d'accès portail.
+        /// </summary>
+        [JsonProperty("email_state")]
+        public string EmailState { get; set; }
     }
 }
