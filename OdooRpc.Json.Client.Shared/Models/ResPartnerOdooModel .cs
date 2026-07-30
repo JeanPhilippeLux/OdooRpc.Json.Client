@@ -521,6 +521,11 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("gender_custom")]
         public GenderOdooEnum? Gender { get; set; }
 
+        /// <summary>Date du dernier achat web du client (champ Studio, type date). Mis à jour depuis
+        /// Let's TART d'après la commande e-commerce la plus récente rattachée à sa carte de fidélité.</summary>
+        [JsonProperty("x_studio_last_web_purchase_date")]
+        public DateTime? LastWebPurchaseDate { get; set; }
+
         [JsonProperty("client_status")]
         public ClientStatusOdooEnum? ClientStatus { get; set; }
 
