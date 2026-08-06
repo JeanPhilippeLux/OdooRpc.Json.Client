@@ -22,5 +22,12 @@ namespace OdooRpc.Json.Client.Shared.Models
         // many2many vers stock.warehouse (onglet "Magasins" dans Odoo)
         [JsonProperty("warehouse_ids")]
         public long[] WarehouseIds { get; set; }
+
+        // Tranche horaire de livraison (champs custom, float_time Odoo : 8.5 = 08:30)
+        [JsonProperty("delivery_start_hour")]
+        public double? DeliveryStartHour { get; set; }
+
+        [JsonProperty("delivery_end_hour")]
+        public double? DeliveryEndHour { get; set; }
     }
 }
