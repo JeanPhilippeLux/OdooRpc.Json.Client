@@ -94,6 +94,12 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("carrier_id")]
         public long? CarrierId { get; set; }
 
+        // Créneau horaire choisi par le client, au format texte "HH:MM - HH:MM"
+        // (ex. "11:00 - 20:00"). Utilisé notamment pour les points collect / Happy Partner,
+        // où le carrier "Pick up in store" ne porte pas de tranche (delivery_start/end_hour = 0).
+        [JsonProperty("timeslot")]
+        public string Timeslot { get; set; }
+
         // Montant total des frais de livraison de la commande (module delivery).
         [JsonProperty("amount_delivery")]
         public decimal? AmountDelivery { get; set; }
