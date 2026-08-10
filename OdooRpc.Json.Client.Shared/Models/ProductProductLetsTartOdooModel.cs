@@ -55,5 +55,13 @@ namespace OdooRpc.Json.Client.Shared.Models
         /// </summary>
         [JsonProperty("public_categ_ids")]
         public long[] PublicCategIds { get; set; }
+
+        /// <summary>
+        /// recommended_retail_price — prix de vente conseillé de la variante. Alimenté depuis le
+        /// prix public Lets.TART (groupe tarifaire Particulier, PickupPrice en PCE) lors de la
+        /// synchronisation d'un article.
+        /// </summary>
+        [JsonProperty("recommended_retail_price")]
+        public decimal? RecommendedRetailPrice { get; set; }
     }
 }
