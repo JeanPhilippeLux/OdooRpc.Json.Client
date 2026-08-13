@@ -29,5 +29,17 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("company_id")]
         public long? CompanyId { get; set; }
+
+        /// <summary>
+        /// Carte active. LECTURE SEULE : côté Odoo c'est un champ calculé et stocké
+        /// (depends: program_type, partner_id, partner_id.is_opt_in_fidelity). Une écriture est
+        /// acceptée en apparence (le write renvoie true) mais n'est PAS appliquée.
+        ///
+        /// Pour neutraliser une carte (ex. fusion de comptes), détacher son partner
+        /// (partner_id = false) — c'est ce qui la sort du champ calculé `card_number` du module
+        /// custom, lequel ne filtre de toute façon pas sur `active`.
+        /// </summary>
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
     }
 }
