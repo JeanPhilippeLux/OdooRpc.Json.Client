@@ -21,6 +21,15 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("partner_id")]
         public long PartnerId { get; set; }
 
+        /// <summary>
+        /// Wizard (<c>portal.wizard</c>) auquel appartient cette ligne. Indispensable pour cibler la
+        /// ligne que l'on vient de générer : les wizards sont transients mais leurs lignes restent
+        /// lisibles, donc un filtre sur le seul <c>partner_id</c> remonte aussi celles des tentatives
+        /// précédentes.
+        /// </summary>
+        [JsonProperty("wizard_id")]
+        public long WizardId { get; set; }
+
         [JsonProperty("email")]
         public string Email { get; set; }
 
