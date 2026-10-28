@@ -293,6 +293,9 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("has_price_changed")]
         public bool? HasPriceChanged { get; set; }
 
+        [JsonProperty("analytic_distribution")]
+        public Dictionary<string, double> AnalyticDistribution { get; set; }
+
     }
 
 
