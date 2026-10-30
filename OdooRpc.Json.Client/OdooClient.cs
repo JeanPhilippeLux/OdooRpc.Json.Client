@@ -19,7 +19,11 @@ namespace OdooRpc.Json.Client
         private static HttpClient _client;
         public OdooConfig Config { get; }
 
-        [ThreadStatic] private static int? _userUid;
+        // Uid partagé par tous les threads (un login coûte ~380 ms), une entrée par base / utilisateur :
+        // l'uid du même login diffère d'un environnement Odoo à l'autre.
+        private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, int> _userUids = new();
+
+        private string UserUidKey => $"{Config.ApiUrl}|{Config.DbName}|{Config.UserName}";
 
         /// <summary>
         /// Can be set to false, if server certificate shall not be validated.
@@ -248,8 +252,8 @@ namespace OdooRpc.Json.Client
 
         public async Task<OdooResult<int>> GetCurrentUserUidOrLoginAsync(CancellationToken cancellationToken = default)
         {
-            if (_userUid.HasValue)
-                return await Task.FromResult(OdooResult<int>.SucceedResult(_userUid.Value));
+            if (_userUids.TryGetValue(UserUidKey, out int userUid))
+                return OdooResult<int>.SucceedResult(userUid);
 
             return await LoginAsync(cancellationToken);
         }
@@ -258,7 +262,7 @@ namespace OdooRpc.Json.Client
             var result = await LoginAsync(Config, cancellationToken);
 
             if (result.Succeed)
-                _userUid = result.Value;
+                _userUids[UserUidKey] = result.Value;
 
             return result;
         }
