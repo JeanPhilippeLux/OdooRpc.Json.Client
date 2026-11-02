@@ -143,6 +143,10 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("is_delivery")]
         public bool? IsDelivery { get; set; }
 
+        // true si la ligne est une récompense fidélité/coupon (module sale_loyalty), ex. produit offert.
+        [JsonProperty("is_reward_line")]
+        public bool? IsRewardLine { get; set; }
+
         [JsonProperty("state")]
         public string State { get; set; }
 

@@ -568,6 +568,9 @@ namespace OdooRpc.Json.Client.Shared.Models
         BelgiumDutch = 2,
         [EnumMember(Value = "fr_BE")]
         BelgiumFrench = 3,
+        // Langue active dans Odoo : une seule fiche en fr_FR faisait échouer toute lecture de partners.
+        [EnumMember(Value = "fr_FR")]
+        FranceFrench = 4,
     }
 
 

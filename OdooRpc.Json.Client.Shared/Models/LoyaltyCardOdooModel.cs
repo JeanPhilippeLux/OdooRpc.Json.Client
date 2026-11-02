@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using OdooRpc.Json.Client.Attributes;
 using OdooRpc.Json.Client.Converters;
@@ -29,6 +30,10 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("company_id")]
         public long? CompanyId { get; set; }
+
+        // Date d'expiration du bon (vide = pas d'expiration).
+        [JsonProperty("expiration_date")]
+        public DateTime? ExpirationDate { get; set; }
 
         /// <summary>
         /// Carte active. LECTURE SEULE : côté Odoo c'est un champ calculé et stocké

@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using OdooRpc.Json.Client.Attributes;
 using OdooRpc.Json.Client.Converters;
@@ -23,5 +24,16 @@ namespace OdooRpc.Json.Client.Shared.Models
 
         [JsonProperty("company_id")]
         public long? CompanyId { get; set; }
+
+        // Période de validité du programme (vides = pas de limite).
+        [JsonProperty("date_from")]
+        public DateTime? DateFrom { get; set; }
+
+        [JsonProperty("date_to")]
+        public DateTime? DateTo { get; set; }
+
+        // loyalty.reward
+        [JsonProperty("reward_ids")]
+        public long[] RewardIds { get; set; }
     }
 }
