@@ -363,6 +363,14 @@ namespace OdooRpc.Json.Client.Shared.Models
         [JsonProperty("reversal_move_id")]
         public long[] ReversalMoveId { get; set; }
 
+        // pos.order
+        [JsonProperty("pos_order_ids")]
+        public long[] PosOrderIds { get; set; }
+
+        // pos.order
+        [JsonProperty("reversed_pos_order_id")]
+        public long? ReversedPosOrderId { get; set; }
+
         // account.account
         [JsonProperty("l10n_de_datev_main_account_id")]
         public long? L10nDeDatevMainAccountId { get; set; }
