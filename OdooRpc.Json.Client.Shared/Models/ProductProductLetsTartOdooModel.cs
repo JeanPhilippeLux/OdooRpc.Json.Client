@@ -63,5 +63,16 @@ namespace OdooRpc.Json.Client.Shared.Models
         /// </summary>
         [JsonProperty("recommended_retail_price")]
         public decimal? RecommendedRetailPrice { get; set; }
+
+        /// <summary>
+        /// not_available_for_delivery — « Non disponible à la livraison » (module
+        /// <c>tartes_francoise_pos</c>, variante uniquement). Coché, le site refuse l'article en
+        /// livraison à domicile. Alimenté depuis la case « Livraison » des catalogues de Seneffe
+        /// (inverse de <c>InventCatalogLine.CanDelivery</c>) par la synchro des catalogues.
+        /// Le champ n'existe pas sur tous les environnements Odoo : toujours restreindre les
+        /// lectures par un <c>Select</c> et tester sa présence avant de l'écrire.
+        /// </summary>
+        [JsonProperty("not_available_for_delivery")]
+        public bool? NotAvailableForDelivery { get; set; }
     }
 }
